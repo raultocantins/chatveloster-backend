@@ -4,7 +4,7 @@ var io = require("socket.io")(http);
 const cors=require('cors')
 var clients = {};
 var msgs = [];
-var date = new Date();
+var date = new Date().toString().toLowerCase();
 var bodyParser = require("body-parser");
 const connection = require("./database");
 const User = require("./user");
@@ -113,6 +113,9 @@ catch(e){
 
 // Parte do chat com SocketIO
 io.on("connection", function (client) {
+  setInterval(()=>{
+msgs=[]
+  },60*60*24)
   //juntando client ao server com join
   client.on("join", function (name) {
     //console.log("Joined: " + name);
