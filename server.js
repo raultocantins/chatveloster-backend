@@ -136,7 +136,7 @@ io.on("connection", function (client) {
     io.emit("update", clients);
   });
 });
-
-http.listen(4000, () => {
+ 
+http.listen(process.env.PORT|| 4000, () => {
   console.log("Server running on port 4000");
 });
